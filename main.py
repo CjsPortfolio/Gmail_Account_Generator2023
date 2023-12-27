@@ -5,7 +5,7 @@ import string
 import time
 
 # Define some constants
-BASE_URL = "https://accounts.google.com"
+BASE_URL = "https://accounts.google.com/signup/v2/webcreateaccount?flowName=GlifWebSignIn&flowEntry=SignUp"
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36"}
 RECOVERY_DOMAINS = ["@labworld.org", "@vintomaper.com"]
 
