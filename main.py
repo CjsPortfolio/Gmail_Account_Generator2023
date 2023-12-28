@@ -69,8 +69,14 @@ def create_gmail_account():
     if response.status_code != 200:
         print("Failed to post the first name, last name, and email. Status code:", response.status_code)
         return
-    session_id = response.url.split("sessionid=")[-1].split("&")[0]
-    next_page_url = response.json()["nextPageUrl"]
+
+    try:
+        json_data = response.json()
+        session_id = json_data["sessionid"]
+        next_page_url = json_data.get("nextPageUrl", "")
+    except requests.exceptions.JSONDecodeError:
+        print("Failed to parse JSON in the response. Unexpected response format.")
+        return
 
     # Post the password and the recovery email to obtain the next page url
     print("Posting the password and the recovery email...")
