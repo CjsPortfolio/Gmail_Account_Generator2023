@@ -72,10 +72,11 @@ def create_gmail_account():
 
     try:
         json_data = response.json()
-        session_id = json_data["sessionid"]
+        session_id = json_data.get("sessionid", "")
         next_page_url = json_data.get("nextPageUrl", "")
     except requests.exceptions.JSONDecodeError:
         print("Failed to parse JSON in the response. Unexpected response format.")
+        print("Response content:", response.content)
         return
 
     # Post the password and the recovery email to obtain the next page url
