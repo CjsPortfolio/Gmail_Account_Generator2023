@@ -65,7 +65,7 @@ def create_gmail_account():
         "Username": email.split("@")[0],
         "specId": "username"
     }
-    response = session.post(BASE_URL + "/SignUp", headers=HEADERS, data=data)
+    response = session.get(BASE_URL + "/SignUp", headers=HEADERS, params=data)
     if response.status_code != 200:
         print("Failed to post the first name, last name, and email. Status code:", response.status_code)
         return
